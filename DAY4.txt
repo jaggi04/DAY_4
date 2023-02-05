@@ -1,0 +1,45 @@
+================================================================================ 
+                          DAY-4
+
+===============================================================================
+1.Compare two JSON object having same properties :
+
+let obj1 = { name:"Person 1" ,age:5};
+let obj2 = { age:5, name:"Person 1"};
+
+var stringify = obj => JSON.stringify(obj, Object.keys(obj).sort());
+
+console.log(stringify(obj1) === stringify(obj2));
+
+*Output: true*
+
+===================================================================================
+
+2.Use the rest countries api url and display all the flags in the console
+
+fetch("https://restcountries.com/v2/all")
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(country => {
+      console.log(country.flag);
+    });
+  })
+  .catch(error => console.error(error));
+
+=======================================================================================
+3.Display country names,regions,sub region,population in rest county API
+
+fetch("https://restcountries.com/v2/all")
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(country => {
+      console.log(`Name: ${country.name}`);
+      console.log(`Region: ${country.region}`);
+      console.log(`Subregion: ${country.subregion}`);
+      console.log(`Population: ${country.population}`);
+      console.log("---");
+    });
+  })
+  
+
+=========================================================================================
